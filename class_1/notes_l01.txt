@@ -1,0 +1,80 @@
+
+
+Juan M. Huerta
+jmhuertany@gmail.com
+
+
+site to the review data:
+http://jmcauley.ucsd.edu/data/amazon/
+
+Download Automotive set and beauty set.
+
+Class 1:
+
+I.0. (a) Intros 
+     (b)  Outline course: "what is text mining?"; show one review 
+     (c) And overview of course:  (i) Text processing, (ii) Statistical methods and POS (iii) Machine Learning. Focus on  class 1  
+     (d) overview of data, tools, language, libraries, github
+     	 git overview
+     	 github of the course: https://github.com/JuanManuelHuerta/NLP_2018
+	 git clone https://github.com/JuanManuelHuerta/NLP_2018
+     (e) Quick python refresher                          [L01S00]
+     (f) Book: Natural Language Processing with Python, Bird et al. 
+
+I.1. A product-review corpus
+     (a) Download data [http://jmcauley.ucsd.edu/data/amazon/] 
+     (b) take a peek; discuss the json structure
+     (c) Structured/unstructured data
+     (d) what kind of questions can we answer? 
+
+I.2 Initial analysis of the corpus: 
+    (a) initial statistics of a blob of reviews: counts, frequency: reviewers, stars, 
+    (b) products; counts and structured aspect  
+    (c) reviewers                                        [L01S01]
+
+I.3. Text preprocessing and cleanup in Python: 
+     (a)  Simple sentence tokenization
+     (b) Word Tokenization
+     (c) lower casing, symbols and numbers, punctuation, regular expressions, tokenization (splitting) [L01S02]
+         word_tokenization with nltk
+	 custom word_tokenization function
+	 Regular expressions substitute:	 re.sub(r'',r'',string)
+	 How good can a tokenizer become?
+
+I.4. Basic statistics: number of words per review  
+     Use our custom tokenizer to build a single dictionary and a dictionary per score level  [L01S03]
+
+I.5  (Prelim: NLTK, download, overview)
+
+I.6. Unigrams statistics, filtering stop words, building dictionaries (python)  [L01S04]
+     https://github.com/Alir3z4/stop-words/blob/master/english.txt
+     brew install curl
+     curl https://raw.githubusercontent.com/Alir3z4/stop-words/master/english.txt > stop_words.txt
+     Remove stop words
+
+I.7.   TF-IDF  Term Frequency Inverse document frequency: per product  [L01S05]
+       https://en.wikipedia.org/wiki/Tf%E2%80%93idf
+
+
+
+=================
+
+Interesting repos:
+
+https://github.com/cytora/pycon-nlp-in-10-lines
+
+Regular expressions
+https://www.tutorialspoint.com/python/python_reg_expressions.htm
+
+What is JSON?
+https://en.wikipedia.org/wiki/JSON
+
+
+NLTK:
+http://www.nltk.org/
+
+
+Computational Complexity:
+
+TF-IDF
+http://trimc-nlp.blogspot.com/2013/04/tfidf-with-google-n-grams-and-pos-tags.html
