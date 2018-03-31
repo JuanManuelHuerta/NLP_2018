@@ -7,7 +7,7 @@ jmhuertany@gmail.com
 site to the review data:
 http://jmcauley.ucsd.edu/data/amazon/
 
-Download Automotive set and beauty set into the root directory.
+Download Automotive set and beauty set into the root directory   .
 
 
 Class 1:
