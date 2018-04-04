@@ -14,12 +14,6 @@ def custom_word_tokenize(my_string):
     words=s3.split(" ")
     return words
 
-
-
-
-## Open the file, scan the data, keep review texts.
-
-
 fp=open("stop_words.txt","rt")
 stop_words=set()
 for line in fp:
@@ -68,10 +62,6 @@ for review_data in all_data:
                 dictionary_per_score[score][word]=0
             master_dictionary[word]+=1
             dictionary_per_score[score][word]+=1
-#master_dictionary_sorted=sorted(master_dictionary.items(),key=operator.itemgetter(1), reverse=True)
-#print "Big dictionary"
-#for w in master_dictionary_sorted:
-#    print w
 
 top_words={}
 for score in dictionary_per_score:
