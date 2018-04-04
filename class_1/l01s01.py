@@ -4,8 +4,6 @@ import numpy
 from nltk import sent_tokenize, word_tokenize, pos_tag
 import unicodedata
 
-
-
 ## Open the file, scan the data, keep review texts.
 
 fp=open("../reviews_Automotive_5.json","rt")
