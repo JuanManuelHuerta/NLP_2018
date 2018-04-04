@@ -13,14 +13,7 @@ def custom_word_tokenize(my_string):
     words=s3.split(" ")
     return words
 
-
-
-
 ## Open the file, scan the data, keep review texts.
-
-
-
-
 fp=open("../reviews_Automotive_5.json","rt")
 all_data=[]
 reviews_text=[]
@@ -35,12 +28,6 @@ for line in fp:
         products_count[asin]=0
     products_count[asin]+=1
 
-## Let's compute some statistics
-##  - Average Score
-## -  Median score
-##  - Total number of reviews
-##  - Total number of reviewers
-##  - Total number of products
 print "Number of reviews",  len(reviews_text)
 print "Number of products",  len(products_count)
 print "Avg reviews per product",  numpy.mean(products_count.values())
