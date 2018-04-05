@@ -14,14 +14,6 @@ def custom_word_tokenize(my_string):
     words=s3.split(" ")
     return words
 
-
-
-
-## Open the file, scan the data, keep review texts.
-
-
-
-
 fp=open("../reviews_Automotive_5.json","rt")
 all_data=[]
 reviews_text=[]
@@ -74,7 +66,4 @@ for score in dictionary_per_score:
     for word in dps_sorted:
         print word
 
-        
-
-
-
+       
