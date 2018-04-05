@@ -7,6 +7,8 @@ import re
 import operator
 import math
 
+#  Compute the entropy of the posterior score distribution given word
+
 def custom_word_tokenizer(my_string):
     s0= my_string
     s1= re.sub(r'([a-z])\.([A-Z])',r'\1 \2',s0)

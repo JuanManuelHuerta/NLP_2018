@@ -7,6 +7,7 @@ import re
 import operator
 import nltk
 
+# Compute the word unigram probability per category but only for specific POS tags
 
 
 

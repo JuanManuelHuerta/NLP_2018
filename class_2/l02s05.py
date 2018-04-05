@@ -9,6 +9,9 @@ import math
 import gzip
 import nltk
 
+
+#  Build your search engine!!
+
 def custom_word_tokenize(my_string):
     s0=my_string
     s1=re.sub(r'([a-z])\.([A-Z])',r'\1 \2',s0)
@@ -94,9 +97,10 @@ while True:
         if word in inverse_index:
             for asin in inverse_index[word]:
                 if not asin in results:
-                    results[asin]=inverse_index[word][asin]
-                if inverse_index[word][asin] > results[asin]:
-                    results[asin]=inverse_index[word][asin]
+                    results[asin]=0.0
+#                if inverse_index[word][asin] > results[asin]:
+#                    results[asin]=inverse_index[word][asin]
+                results[asin]+=inverse_index[word][asin]
     sr=sorted(results.items(), key=operator.itemgetter(1), reverse=True)
     if len(sr)>10:
         sr=sr[:10]

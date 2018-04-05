@@ -9,6 +9,9 @@ import math
 import gzip
 import nltk
 
+
+#  Goal TFIDF & POS
+
 def custom_word_tokenize(my_string):
     s0=my_string
     s1=re.sub(r'([a-z])\.([A-Z])',r'\1 \2',s0)

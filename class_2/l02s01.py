@@ -6,6 +6,9 @@ import numpy
 import re
 import operator
 
+##  Goal: Compute the word unigram probability for each score category
+
+
 def custom_word_tokenizer(my_string):
     s0= my_string
     s1= re.sub(r'([a-z])\.([A-Z])',r'\1 \2',s0)
