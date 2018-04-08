@@ -6,6 +6,8 @@ import math
 import gzip
 import nltk
 
+## GOAL  : Vector Representation 
+
 
 ##  STEP A. LOAD THE STOP WORDS
 fp=open("stop_words.txt","rt")
