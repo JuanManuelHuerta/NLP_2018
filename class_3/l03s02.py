@@ -9,6 +9,7 @@ import math
 import gzip
 import nltk
 
+# Goal: Implement custom similarity score (cosine distance) and apply pairwise to documents
 
 def custom_similarity(a,b):
     i=len(a.intersection(b))

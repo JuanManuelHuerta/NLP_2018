@@ -6,7 +6,7 @@ import math
 import gzip
 import nltk
 
-## GOAL  : Vector Representation 
+## GOAL  : Create Sparse Vector Representations of a document
 
 
 ##  STEP A. LOAD THE STOP WORDS

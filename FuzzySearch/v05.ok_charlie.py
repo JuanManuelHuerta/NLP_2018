@@ -8,6 +8,9 @@ import scipy.io.wavfile as wav
 import numpy
 import math
 
+# Goal: Implement a search algorithm to match a search query to closest reference entry
+
+
 def viterbi(X,Y):
     self_transition = math.log(0.10)
     next_transition = math.log(0.80)

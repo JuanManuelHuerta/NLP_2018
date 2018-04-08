@@ -1,4 +1,6 @@
 
+# Goal: Implement string edit distance (Levenshtein)
+
 def levenshtein(s, t):
         ''' From Wikipedia article; Iterative with two matrix rows. '''
         if s == t: return 0
