@@ -82,7 +82,7 @@ print("Loaded vectorized Reference")
 
 
 # Loop for audio
-Record = True
+Record = False
 if Record == True:
     CHUNK = 1024
     FORMAT = pyaudio.paInt16

@@ -2,6 +2,7 @@ import sys
 import json
 import unicodedata
 import numpy
+from nltk import sent_tokenize, word_tokenize, pos_tag
 import re
 import operator
 
@@ -12,26 +13,6 @@ def custom_word_tokenize(my_string):
 	s3=re.sub(r'\. ',r' ',s2)
 	words=s3.split(" ")
 	return words
-
-def levenshtein(s, t):
-        ''' From Wikipedia article; Iterative with two matrix rows. '''
-        if s == t: return 0
-        elif len(s) == 0: return len(t)
-        elif len(t) == 0: return len(s)
-        v0 = [None] * (len(t) + 1)
-        v1 = [None] * (len(t) + 1)
-        for i in range(len(v0)):
-            v0[i] = i
-        for i in range(len(s)):
-            v1[0] = i + 1
-            for j in range(len(t)):
-                cost = 0 if s[i] == t[j] else 1
-                v1[j + 1] = min(v1[j] + 1, v0[j + 1] + 1, v0[j] + cost)
-            for j in range(len(v0)):
-                v0[j] = v1[j]
-                
-        return v1[len(t)]
-
 
 
 
@@ -50,7 +31,7 @@ for line in fp:
 	if not asin in products_count:
 		products_count[asin]=0
 	products_count[asin]+=1
-print "IMHERE"
+
 
 print "Number of reviews", len(all_data)
 print "Number of products", len(products_count)
@@ -80,22 +61,11 @@ for review_data in all_data:
 		master_dictionary[word]+=1
 		dictionary_per_score[score][word]+=1
 
-
-md_sorted = sorted(master_dictionary.items(),key=operator.itemgetter(1),reverse=True)[:3000]
-md_dict={}
-for item in md_sorted:
-	md_dict[item[0]]=item[1]
-while True:
-	candidate = raw_input("Enter candidate word: >").rstrip()
-	if candidate in md_dict:
-		print "Spelling fond"
-	else:
-		corrections={}
-		for key_w in md_dict:
-			corrections[key_w]=levenshtein(candidate,key_w)
-		c_sorted=sorted(corrections.items(),key=operator.itemgetter(1),reverse=False)[:10]
-		for matches in c_sorted:
-			print matches
+for score in dictionary_per_score:
+	print "Score", score
+	dps_sorted = sorted(dictionary_per_score[score].items(),key=operator.itemgetter(1),reverse=True)[:10]
+	for word in dps_sorted:
+		print word
 
 
 
