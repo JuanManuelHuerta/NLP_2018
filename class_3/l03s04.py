@@ -22,7 +22,31 @@ def levenshtein(s, t):
 
 
 
+def  sed(x,y):
+	x_l=len(x)
+	y_l=len(y)
+	Z=[[0.0]*(y_l+1) for i in range(x_l+1)]
+	for i in range(y_l+1):
+		Z[0][i]=i
+	for i in range(x_l+1):
+		Z[i][0]=i
+	for i in range(y_l):
+		ii=i+1
+		for j in range(x_l):
+			jj=j+1
+			if x[j]==y[i]:
+				Z[jj][ii]=Z[jj-1][ii-1]
+			else:
+				Z[jj][ii]=min(Z[jj-1][ii]+1,Z[jj][ii-1]+1,Z[jj-1][ii-1]+1)
+	return Z[-1][-1]
+
+
+
 s="AABC"
 t="AADCF"
-print levenshtein(s,t)
+while True:
+	x=raw_input("String A>").rstrip()
+	y=raw_input("String B>").rstrip()
+	print levenshtein(x,y)
+	print sed(x,y)
 
