@@ -12,25 +12,34 @@ import math
 
 
 def viterbi(X,Y):
+    # This is the search algorithm
+
+    # These are some parameters that will be used in the search:
     self_transition = math.log(0.10)
     next_transition = math.log(0.80)
     skip_transition = math.log(0.10)
-    # Cepstral mean normalization
+
+    # Cepstral mean normalization: removes channel bias from the signal
     X=X-numpy.mean(X,axis=0)
     Y=Y-numpy.mean(Y,axis=0)
+
     # X: Reference 
     # Y: Hypothesis
     distance=0.0
     n=len(X)
     m=len(Y)
     T1=[]
-    # T1 s per observations 
+
+    # Initialize our calculation matrix; T1 s per observations 
     for i in range(m):
         # Each vector is number of states
         T1.append([None]*n)       
+
     # First observation , state pair
+    # We're using Normal distribution assumptions; but computing the Log-Likelihood to avoid numerical overflows
     distance=math.exp(-0.5*numpy.linalg.norm(X[0]-Y[0]))
     T1[0][0]=math.log(distance)
+
     # Initialize State
     # For each input vector
     for i in range(1,m):
@@ -50,14 +59,12 @@ def viterbi(X,Y):
             
             if same_state is not None or one_forward is not None or two_forward is not None:
                 T1[i][j]=max(same_state,one_forward,two_forward)
-        #normalizer=numpy.max(T1[i])
-        #T1[i]=[x/normalizer if x is not None else None for x in T1[i]]
 
-#    for v1 in T1:
-#        print v1
 
     total_distance = T1[m-1][n-1]
     return total_distance
+
+##  BODY OF THE PROGRAM:
 
 # Define the domain:
 
@@ -71,7 +78,7 @@ reference={
 
 print("Defined Domain")
 
-# Load the reference data
+# Load the reference wav data and compute the mel-frequency cepstral coefficient vectors (mfcc vectors)
 
 vectors={}
 for key in reference:
@@ -81,8 +88,9 @@ for key in reference:
 print("Loaded vectorized Reference")
 
 
+##  If record set Record = True
 # Loop for audio
-Record = False
+Record = True
 if Record == True:
     CHUNK = 1024
     FORMAT = pyaudio.paInt16
@@ -123,6 +131,11 @@ if Record == True:
 
 (rate,sig) = wav.read("test.wav")
 mfcc_feat = mfcc(sig,rate)
+
+
+
+####   FOr each hypothesis in vectors, compute the score...
+###    The most likely (highest likelihood) will be our result
 
 for key in vectors:
     distance=viterbi(vectors[key],mfcc_feat)
